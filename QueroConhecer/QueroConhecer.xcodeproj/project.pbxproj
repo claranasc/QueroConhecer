@@ -13,6 +13,8 @@
 		254E467224FDCF84004C84C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 254E467024FDCF84004C84C5 /* Main.storyboard */; };
 		254E467424FDCF87004C84C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 254E467324FDCF87004C84C5 /* Assets.xcassets */; };
 		254E467724FDCF87004C84C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 254E467524FDCF87004C84C5 /* LaunchScreen.storyboard */; };
+		254E467F24FDD30F004C84C5 /* PlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254E467E24FDD30F004C84C5 /* PlacesTableViewController.swift */; };
+		254E468124FDD38C004C84C5 /* PlaceFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254E468024FDD38C004C84C5 /* PlaceFinderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		254E467324FDCF87004C84C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		254E467624FDCF87004C84C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		254E467824FDCF87004C84C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		254E467E24FDD30F004C84C5 /* PlacesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesTableViewController.swift; sourceTree = "<group>"; };
+		254E468024FDD38C004C84C5 /* PlaceFinderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceFinderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				254E466C24FDCF84004C84C5 /* SceneDelegate.swift */,
 				254E466E24FDCF84004C84C5 /* ViewController.swift */,
 				254E467024FDCF84004C84C5 /* Main.storyboard */,
+				254E467E24FDD30F004C84C5 /* PlacesTableViewController.swift */,
+				254E468024FDD38C004C84C5 /* PlaceFinderViewController.swift */,
 				254E467324FDCF87004C84C5 /* Assets.xcassets */,
 				254E467524FDCF87004C84C5 /* LaunchScreen.storyboard */,
 				254E467824FDCF87004C84C5 /* Info.plist */,
@@ -139,7 +145,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				254E466F24FDCF84004C84C5 /* ViewController.swift in Sources */,
+				254E467F24FDD30F004C84C5 /* PlacesTableViewController.swift in Sources */,
 				254E466B24FDCF84004C84C5 /* AppDelegate.swift in Sources */,
+				254E468124FDD38C004C84C5 /* PlaceFinderViewController.swift in Sources */,
 				254E466D24FDCF84004C84C5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
