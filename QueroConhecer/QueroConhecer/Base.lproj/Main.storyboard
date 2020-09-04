@@ -101,6 +101,9 @@ por 2 segundos</string>
                                         <state key="normal" title="Escolher">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="findCity:" destination="qeM-jJ-4eT" eventType="touchUpInside" id="6vf-ht-hqL"/>
+                                        </connections>
                                     </button>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PbY-jN-fF2">
                                         <rect key="frame" x="10" y="196" width="354" height="532"/>
@@ -110,9 +113,24 @@ por 2 segundos</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIC-w7-7x5">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="738"/>
+                                        <subviews>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="hR7-Eh-d6t">
+                                                <rect key="frame" x="168.5" y="350.5" width="37" height="37"/>
+                                                <color key="color" name="main"/>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="hR7-Eh-d6t" firstAttribute="centerY" secondItem="LIC-w7-7x5" secondAttribute="centerY" id="Qs1-2R-FH5"/>
+                                            <constraint firstItem="hR7-Eh-d6t" firstAttribute="centerX" secondItem="LIC-w7-7x5" secondAttribute="centerX" id="uku-8K-KQa"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstItem="LIC-w7-7x5" firstAttribute="leading" secondItem="T2k-bd-fF2" secondAttribute="leading" id="2TB-n9-7GH"/>
                                     <constraint firstItem="cDg-8D-tma" firstAttribute="top" secondItem="Zty-Ul-rML" secondAttribute="bottom" constant="20" id="4Hf-bJ-p20"/>
                                     <constraint firstItem="PbY-jN-fF2" firstAttribute="top" secondItem="cDg-8D-tma" secondAttribute="bottom" constant="20" id="EYO-2D-xFM"/>
                                     <constraint firstItem="PbY-jN-fF2" firstAttribute="leading" secondItem="T2k-bd-fF2" secondAttribute="leading" constant="10" id="F11-sr-f2A"/>
@@ -125,8 +143,11 @@ por 2 segundos</string>
                                     <constraint firstItem="e7J-gF-kiU" firstAttribute="top" secondItem="xin-Lo-hT4" secondAttribute="bottom" constant="20" id="Xva-kP-kYi"/>
                                     <constraint firstItem="e7J-gF-kiU" firstAttribute="leading" secondItem="Zty-Ul-rML" secondAttribute="trailing" constant="10" id="dFJ-TL-hvU"/>
                                     <constraint firstAttribute="trailing" secondItem="PbY-jN-fF2" secondAttribute="trailing" constant="10" id="dZu-jl-trd"/>
+                                    <constraint firstItem="LIC-w7-7x5" firstAttribute="top" secondItem="T2k-bd-fF2" secondAttribute="top" id="kuD-TN-7MR"/>
                                     <constraint firstItem="xin-Lo-hT4" firstAttribute="leading" secondItem="T2k-bd-fF2" secondAttribute="leading" constant="10" id="rXx-bU-QdQ"/>
                                     <constraint firstAttribute="trailing" secondItem="xin-Lo-hT4" secondAttribute="trailing" constant="10" id="uqL-v9-MoZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="LIC-w7-7x5" secondAttribute="trailing" id="w8r-ke-OZ8"/>
+                                    <constraint firstAttribute="bottom" secondItem="LIC-w7-7x5" secondAttribute="bottom" id="wnB-M6-bQu"/>
                                     <constraint firstItem="xin-Lo-hT4" firstAttribute="top" secondItem="T2k-bd-fF2" secondAttribute="top" constant="20" id="yso-m8-Mcs"/>
                                 </constraints>
                             </view>
@@ -135,6 +156,9 @@ por 2 segundos</string>
                                 <state key="normal" image="cancel">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="close:" destination="qeM-jJ-4eT" eventType="touchUpInside" id="jtd-7l-exy"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20384738869863014" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -148,6 +172,12 @@ por 2 segundos</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TQb-jP-aM8"/>
                     </view>
+                    <connections>
+                        <outlet property="aiLoading" destination="hR7-Eh-d6t" id="nPm-yv-Cgw"/>
+                        <outlet property="mapView" destination="PbY-jN-fF2" id="48n-He-Gvz"/>
+                        <outlet property="tfCity" destination="Zty-Ul-rML" id="N75-9T-YDd"/>
+                        <outlet property="viLoading" destination="LIC-w7-7x5" id="tiV-X8-RAX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Spk-tM-2Qw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -174,7 +204,7 @@ por 2 segundos</string>
         <image name="cancel" width="30" height="30"/>
         <image name="cellIcon" width="40" height="40"/>
         <namedColor name="main">
-            <color red="0.0039215686274509803" green="0.71764705882352942" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0040000001899898052" green="0.71799999475479126" blue="0.88999998569488525" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
