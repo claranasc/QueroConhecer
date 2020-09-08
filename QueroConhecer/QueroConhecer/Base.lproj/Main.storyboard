@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TSu-2u-P5C">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -16,6 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="Nfb-bF-bVa">
+                            <rect key="frame" x="0.0" y="116" width="414" height="0.0"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="Fik-YK-ywN" imageView="Yfq-9M-xo7" style="IBUITableViewCellStyleDefault" id="j3L-hu-hFy">
                                 <rect key="frame" x="0.0" y="28" width="414" height="60"/>
@@ -44,14 +49,20 @@
                             <outlet property="delegate" destination="TNM-GX-hKd" id="kFx-rz-8kS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Quero Conhecer" largeTitleDisplayMode="always" id="mtk-Vl-DdC"/>
+                    <navigationItem key="navigationItem" title="Quero Conhecer" largeTitleDisplayMode="always" id="mtk-Vl-DdC">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="8vX-Ad-CCf">
+                            <connections>
+                                <segue destination="qeM-jJ-4eT" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="0gu-fJ-fkq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="iW5-CV-7ku" kind="show" identifier="mapSegue" id="qZK-dY-0j9"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dz5-zQ-yQP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-210" y="-100"/>
+            <point key="canvasLocation" x="-210.1449275362319" y="-100.44642857142857"/>
         </scene>
         <!--title-->
         <scene sceneID="pbd-No-iIH">
@@ -93,6 +104,9 @@
                                                 <state key="normal" title="Traçar Rota">
                                                     <color key="titleColor" name="main"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="showRoute:" destination="iW5-CV-7ku" eventType="touchUpInside" id="2s2-g8-ird"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Endereço" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nR7-gg-5Ly">
                                                 <rect key="frame" x="12" y="43.5" width="370" height="18"/>
@@ -133,11 +147,23 @@
                     </view>
                     <navigationItem key="navigationItem" title="title" id="xhB-0M-6Qt">
                         <barButtonItem key="backBarButtonItem" title=" " id="qI5-64-6lF"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="Cts-Bf-tTX">
+                            <connections>
+                                <action selector="showSearchBar:" destination="iW5-CV-7ku" id="vT7-Ld-JaD"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="lbAddress" destination="nR7-gg-5Ly" id="bdI-nM-G1j"/>
+                        <outlet property="lbName" destination="o7e-uX-RcR" id="M5t-Q1-Vsw"/>
+                        <outlet property="mapView" destination="WHG-av-QGg" id="SVH-6t-9jc"/>
+                        <outlet property="searchBar" destination="Qig-13-4aD" id="8LQ-Zb-8t1"/>
+                        <outlet property="viInfo" destination="822-iR-nT4" id="JVY-pn-Puc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xdm-uY-xNH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="691.304347826087" y="-426.5625"/>
+            <point key="canvasLocation" x="654" y="232"/>
         </scene>
         <!--Place Finder View Controller-->
         <scene sceneID="QVZ-aN-FBk">
@@ -187,7 +213,7 @@ por 2 segundos</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIC-w7-7x5">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIC-w7-7x5">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="738"/>
                                         <subviews>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="hR7-Eh-d6t">
@@ -255,7 +281,7 @@ por 2 segundos</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Spk-tM-2Qw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="688.40579710144937" y="316.07142857142856"/>
+            <point key="canvasLocation" x="654" y="-432"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="y6F-lj-p7J">
