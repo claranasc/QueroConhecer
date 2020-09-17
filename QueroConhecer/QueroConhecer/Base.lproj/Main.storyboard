@@ -52,7 +52,7 @@
                     <navigationItem key="navigationItem" title="Quero Conhecer" largeTitleDisplayMode="always" id="mtk-Vl-DdC">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="8vX-Ad-CCf">
                             <connections>
-                                <segue destination="qeM-jJ-4eT" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="0gu-fJ-fkq"/>
+                                <segue destination="qeM-jJ-4eT" kind="presentation" identifier="finderSegue" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="0gu-fJ-fkq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
