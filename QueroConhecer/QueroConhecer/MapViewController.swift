@@ -25,6 +25,8 @@ class MapViewController: UIViewController {
         for place in places {
             addToMap(place)
         }
+        
+        showPlaces()
     }
     
     func addToMap(_ place: Place) {
@@ -34,6 +36,10 @@ class MapViewController: UIViewController {
         mapView.addAnnotation(annotation)
     }
     
+    func showPlaces() {
+        mapView.showAnnotations(mapView.annotations, animated: true)
+    }
+        
     @IBAction func showRoute(_ sender: UIButton) {
     }
     
