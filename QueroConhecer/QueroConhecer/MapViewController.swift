@@ -17,8 +17,21 @@ class MapViewController: UIViewController {
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet weak var lbAddress: UILabel!
     
+    var places: [Place]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for place in places {
+            addToMap(place)
+        }
+    }
+    
+    func addToMap(_ place: Place) {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = place.coordinate
+        annotation.title = place.name
+        mapView.addAnnotation(annotation)
     }
     
     @IBAction func showRoute(_ sender: UIButton) {
@@ -26,18 +39,4 @@ class MapViewController: UIViewController {
     
     @IBAction func showSearchBar(_ sender: UIBarButtonItem) {
     }
-    
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
