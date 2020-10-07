@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		25211AA42508363F00614307 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25211AA32508363F00614307 /* MapViewController.swift */; };
 		25211AA6250840E300614307 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25211AA5250840E300614307 /* Place.swift */; };
+		25335A8C252E855F005B3BA0 /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25335A8B252E855F005B3BA0 /* PlaceAnnotation.swift */; };
 		254E466B24FDCF84004C84C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254E466A24FDCF84004C84C5 /* AppDelegate.swift */; };
 		254E466D24FDCF84004C84C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254E466C24FDCF84004C84C5 /* SceneDelegate.swift */; };
 		254E466F24FDCF84004C84C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254E466E24FDCF84004C84C5 /* ViewController.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		25211AA32508363F00614307 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		25211AA5250840E300614307 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		25335A8B252E855F005B3BA0 /* PlaceAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAnnotation.swift; sourceTree = "<group>"; };
 		254E466724FDCF84004C84C5 /* QueroConhecer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QueroConhecer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		254E466A24FDCF84004C84C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		254E466C24FDCF84004C84C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				254E467024FDCF84004C84C5 /* Main.storyboard */,
 				25211AA5250840E300614307 /* Place.swift */,
 				254E467E24FDD30F004C84C5 /* PlacesTableViewController.swift */,
+				25335A8B252E855F005B3BA0 /* PlaceAnnotation.swift */,
 				254E468024FDD38C004C84C5 /* PlaceFinderViewController.swift */,
 				25211AA32508363F00614307 /* MapViewController.swift */,
 				254E467324FDCF87004C84C5 /* Assets.xcassets */,
@@ -150,6 +153,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25335A8C252E855F005B3BA0 /* PlaceAnnotation.swift in Sources */,
 				254E466F24FDCF84004C84C5 /* ViewController.swift in Sources */,
 				25211AA42508363F00614307 /* MapViewController.swift in Sources */,
 				254E467F24FDD30F004C84C5 /* PlacesTableViewController.swift in Sources */,
