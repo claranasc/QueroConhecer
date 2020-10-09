@@ -18,10 +18,8 @@ class MapViewController: UIViewController {
     @IBOutlet weak var lbAddress: UILabel!
     @IBOutlet weak var loading: UIActivityIndicatorView!
     
-    
-    
-    
     var places: [Place]!
+    var poi: [MKAnnotation] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +57,8 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func showSearchBar(_ sender: UIBarButtonItem) {
+        searchBar.resignFirstResponder()
+        searchBar.isHidden = !searchBar.isHidden
     }
 }
 
@@ -89,7 +89,29 @@ extension MapViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         loading.startAnimating()
         
-        
-        
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = searchBar.text
+        request.region = mapView.region
+        let search = MKLocalSearch(request: request)
+        search.start { (response, error) in
+            if error == nil {
+                guard let response = response else {
+                    self.loading.stopAnimating()
+                    return
+                }
+                self.mapView.removeAnnotations(self.poi)
+                self.poi.removeAll()
+                for item in response.mapItems {
+                    let annotation = PlaceAnnotation(coordinate: item.placemark.coordinate, type: .poi)
+                    annotation.title = item.name
+                    annotation.subtitle = item.phoneNumber
+                    annotation.address = Place.getFormattedAddress(with: item.placemark)
+                    self.poi.append(annotation)
+                }
+                self.mapView.addAnnotations(self.poi)
+                self.mapView.showAnnotations(self.poi, animated: true)
+            }
+            self.loading.stopAnimating()
+        }
     }
 }
