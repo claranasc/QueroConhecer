@@ -76,18 +76,26 @@
                                 <rect key="frame" x="20" y="140" width="374" height="722"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="zpG-Hn-z5i">
+                                <rect key="frame" x="188.5" y="424.5" width="37" height="37"/>
+                                <color key="color" name="main"/>
+                            </activityIndicatorView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="dQB-cJ-va7">
                                 <rect key="frame" x="10" y="150" width="394" height="702"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" placeholder="o que você deseja buscar?" translatesAutoresizingMaskIntoConstraints="NO" id="Qig-13-4aD">
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="o que você deseja buscar?" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qig-13-4aD">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="Mic-NW-Ogd"/>
                                         </constraints>
+                                        <color key="tintColor" name="main"/>
                                         <color key="barTintColor" name="main"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="iW5-CV-7ku" id="jrN-pE-Hoz"/>
+                                        </connections>
                                     </searchBar>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WHG-av-QGg">
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="WHG-av-QGg">
                                         <rect key="frame" x="0.0" y="50" width="394" height="486"/>
                                     </mapView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="822-iR-nT4">
@@ -136,6 +144,8 @@
                         <constraints>
                             <constraint firstItem="L8c-7S-qVO" firstAttribute="trailing" secondItem="dQB-cJ-va7" secondAttribute="trailing" constant="10" id="1hp-jT-QSY"/>
                             <constraint firstItem="x30-up-VJC" firstAttribute="leading" secondItem="AEw-9E-7Hv" secondAttribute="leadingMargin" id="GIH-6G-Zz9"/>
+                            <constraint firstItem="zpG-Hn-z5i" firstAttribute="centerX" secondItem="WHG-av-QGg" secondAttribute="centerX" id="TRW-lC-aDh"/>
+                            <constraint firstItem="zpG-Hn-z5i" firstAttribute="centerY" secondItem="WHG-av-QGg" secondAttribute="centerY" id="UEo-GJ-xtb"/>
                             <constraint firstAttribute="bottomMargin" secondItem="x30-up-VJC" secondAttribute="bottom" id="Vyi-Ha-wcp"/>
                             <constraint firstItem="x30-up-VJC" firstAttribute="top" secondItem="AEw-9E-7Hv" secondAttribute="topMargin" id="edP-5n-dyZ"/>
                             <constraint firstItem="dQB-cJ-va7" firstAttribute="top" secondItem="L8c-7S-qVO" secondAttribute="top" constant="10" id="j7K-qb-aCT"/>
@@ -156,6 +166,7 @@
                     <connections>
                         <outlet property="lbAddress" destination="nR7-gg-5Ly" id="bdI-nM-G1j"/>
                         <outlet property="lbName" destination="o7e-uX-RcR" id="M5t-Q1-Vsw"/>
+                        <outlet property="loading" destination="zpG-Hn-z5i" id="xH2-Ah-dth"/>
                         <outlet property="mapView" destination="WHG-av-QGg" id="SVH-6t-9jc"/>
                         <outlet property="searchBar" destination="Qig-13-4aD" id="8LQ-Zb-8t1"/>
                         <outlet property="viInfo" destination="822-iR-nT4" id="JVY-pn-Puc"/>

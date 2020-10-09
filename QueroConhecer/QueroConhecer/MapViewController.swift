@@ -16,12 +16,17 @@ class MapViewController: UIViewController {
     @IBOutlet weak var viInfo: UIView!
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet weak var lbAddress: UILabel!
+    @IBOutlet weak var loading: UIActivityIndicatorView!
+    
+    
+    
     
     var places: [Place]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.isHidden = true
+        mapView.mapType = .mutedStandard
         viInfo.isHidden = true
         
         mapView.delegate = self
@@ -75,5 +80,16 @@ extension MapViewController: MKMapViewDelegate {
         annotationView?.displayPriority = type == .place ? .required : .defaultHigh
         
         return annotationView
+    }
+}
+
+extension MapViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.isHidden = true
+        searchBar.resignFirstResponder()
+        loading.startAnimating()
+        
+        
+        
     }
 }
