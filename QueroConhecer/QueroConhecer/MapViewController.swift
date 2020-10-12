@@ -97,6 +97,27 @@ class MapViewController: UIViewController {
     }
         
     @IBAction func showRoute(_ sender: UIButton) {
+        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
+            showMessage(type: .authorizationWarning)
+            return
+        }
+        let request = MKDirections.Request()
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: selectedAnnotation!.coordinate))
+        request.source = MKMapItem(placemark: MKPlacemark(coordinate: locationManager.location!.coordinate))
+        let directions = MKDirections(request: request)
+        directions.calculate { (response, error) in
+            if error == nil {
+                if let response = response {
+                    self.mapView.removeOverlays(self.mapView.overlays)
+                    
+                    let route = response.routes.first!
+                    print()
+                    
+                }
+            } else {
+                self.showMessage(type: .routeError)
+            }
+        }
     }
     
     @IBAction func showSearchBar(_ sender: UIBarButtonItem) {
@@ -105,32 +126,22 @@ class MapViewController: UIViewController {
     }
     
     func showMessage(type: MapMessageType) {
-//        let litle: String, message: String
-//        var hasConfirmation: Bool = false
-//
-//        switch type {
-//        case .confirmation(let name):
-//            title = "Local encontrado"
-//            message = "Deseja adicionar \(name)?"
-//            hasConfirmation = true
-//        case .error(let errorMessage):
-//            title = "Erro"
-//            message = errorMessage
-//        }
-//
-//        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-//        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
-//        alert.addAction(cancelAction)
-//        if hasConfirmation {
-//            let confirmAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
-//                self.delegate?.addPlace(self.place)
-//                self.dismiss(animated: true, completion: nil)
-//            })
-//            alert.addAction(confirmAction)
-//        }
-//        present(alert, animated: true, completion: nil)
+        let litle = type == .authorizationWarning ? "Aviso" : "Erro"
+        let message = type == .authorizationWarning ? "Para usar os recursos de localização do APP, você precisa permitir o uso na tela de Ajustes" : "Não foi possível encontrar esta rota"
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        if type == .authorizationWarning {
+            let confirmAction = UIAlertAction(title: "Ir para Ajustes", style: .default, handler: { (action) in
+                if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+                }
+            })
+            alert.addAction(confirmAction)
+        }
+        present(alert, animated: true, completion: nil)
     }
-    
 }
 
 extension MapViewController: MKMapViewDelegate {
@@ -151,6 +162,7 @@ extension MapViewController: MKMapViewDelegate {
         annotationView?.displayPriority = type == .place ? .required : .defaultHigh
         return annotationView
     }
+    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
         let camera = MKMapCamera()
@@ -210,6 +222,14 @@ extension MapViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(locations.last!)
+        //if let location = locations.last {
+//            print("Velocidade:", location.speed)
+//            let region = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
+//            mapView.setRegion(region, animated: true)
+            
+        //}
+        
+        
+        
     }
 }
