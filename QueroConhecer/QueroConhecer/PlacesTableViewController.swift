@@ -22,6 +22,7 @@ class PlacesTableViewController: UITableViewController {
         lbNoPlaces.text = "Cadastre os locais que deseja conhecer\nclicando no botão + acima"
         lbNoPlaces.textAlignment = .center
         lbNoPlaces.numberOfLines = 0
+    
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -142,7 +142,6 @@ extension MapViewController: MKMapViewDelegate {
         annotationView?.markerTintColor = type == .place ? UIColor(named: "main") : UIColor(named: "poi")
         annotationView?.glyphImage = type == .place ? UIImage(named: "placeGlyph") : UIImage(named: "poiGlyph")
         annotationView?.displayPriority = type == .place ? .required : .defaultHigh
-        
         return annotationView
     }
 }
@@ -191,6 +190,7 @@ extension MapViewController: CLLocationManagerDelegate {
                 break
         }
     }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print(locations.last!)
     }
