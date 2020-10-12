@@ -27,6 +27,7 @@ class MapViewController: UIViewController {
     var poi: [MKAnnotation] = []
     lazy var locationManager = CLLocationManager()
     var btUserLocation: MKUserTrackingButton!
+    var selectedAnnotation: PlaceAnnotation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,6 +89,12 @@ class MapViewController: UIViewController {
     func showPlaces() {
         mapView.showAnnotations(mapView.annotations, animated: true)
     }
+    
+    func showInfo() {
+        lbName.text = selectedAnnotation!.title
+        lbAddress.text = selectedAnnotation!.address
+        viInfo.isHidden = false
+    }
         
     @IBAction func showRoute(_ sender: UIButton) {
     }
@@ -143,6 +150,10 @@ extension MapViewController: MKMapViewDelegate {
         annotationView?.glyphImage = type == .place ? UIImage(named: "placeGlyph") : UIImage(named: "poiGlyph")
         annotationView?.displayPriority = type == .place ? .required : .defaultHigh
         return annotationView
+    }
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        selectedAnnotation = (view.annotation as! PlaceAnnotation)
+        showInfo()
     }
 }
 
