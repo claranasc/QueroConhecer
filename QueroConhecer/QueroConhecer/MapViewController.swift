@@ -152,6 +152,13 @@ extension MapViewController: MKMapViewDelegate {
         return annotationView
     }
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        let camera = MKMapCamera()
+        camera.centerCoordinate = view.annotation!.coordinate
+        camera.pitch = 80
+        camera.altitude = 100
+        mapView.setCamera(camera, animated: true)
+            
         selectedAnnotation = (view.annotation as! PlaceAnnotation)
         showInfo()
     }
