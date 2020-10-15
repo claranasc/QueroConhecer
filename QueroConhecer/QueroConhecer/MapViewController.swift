@@ -108,10 +108,16 @@ class MapViewController: UIViewController {
         directions.calculate { (response, error) in
             if error == nil {
                 if let response = response {
-                    self.mapView.removeOverlays(self.mapView.overlays)
                     
+                    self.mapView.removeOverlays(self.mapView.overlays)
                     let route = response.routes.first!
-                    print()
+                    
+                    self.mapView.addOverlay(route.polyline, level: .aboveRoads)
+                    var annotations = self.mapView.annotations.filter({!($0 is PlaceAnnotation)})
+                    annotations.append(self.selectedAnnotation!)
+                    self.mapView.showAnnotations(annotations, animated: true)
+                    
+                    
                     
                 }
             } else {
@@ -173,6 +179,16 @@ extension MapViewController: MKMapViewDelegate {
             
         selectedAnnotation = (view.annotation as! PlaceAnnotation)
         showInfo()
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if overlay is MKPolyline {
+            let renderer = MKPolylineRenderer(overlay: overlay)
+            renderer.strokeColor = UIColor(named: "main")?.withAlphaComponent(0.8)
+            renderer.lineWidth = 5.0
+            return renderer
+        }
+        return MKOverlayRenderer(overlay: overlay)
     }
 }
 

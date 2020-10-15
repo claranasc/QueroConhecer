@@ -21,11 +21,12 @@ struct Place: Codable {
     
     static func getFormattedAddress(with placemark: CLPlacemark) -> String {
         var address = ""
+        
         if let street = placemark.thoroughfare {
             address += street //Rua
         }
         if let number = placemark.subThoroughfare {
-            address += " \(number)" //Númeto
+            address += " \(number)" //Número
         }
         if let subLocality = placemark.subLocality {
             address += ", \(subLocality)" //Bairro
